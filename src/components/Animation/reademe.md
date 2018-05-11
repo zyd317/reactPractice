@@ -1,9 +1,9 @@
-#使用方法   
+## usage
 ```
-import Calendar from '../calendar';
-import Animate from '../animation';
+    import Calendar from '../calendar';
+    import Animate from '../animation';
+    const AnimateCalendar = Animate(Calendar);
+```
 
-const AnimateCalendar = Animate(Calendar);
-```
-##要求 
-承载的组件必须自己控制 组件的显示和影藏 （交给Animation 则无法通用）且 必须包含 open,close,update 这三个操作API
+## 要求
+承载的组件必须自己控制*组件的显示和影藏*且 必须包含*open,close,update*这三个操作API
