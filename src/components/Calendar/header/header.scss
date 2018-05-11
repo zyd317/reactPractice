@@ -1,0 +1,57 @@
+.page-header {
+    height: 44px;
+    font-size: 18px;
+    line-height: 44px;
+    text-align: center;
+    position: relative;
+    width: 100%;
+    background: #1ba9ba;
+    z-index: 100;
+    .page-title {
+        text-align: center;
+        color: #fff;
+        font-weight: 400;
+        margin: 0 60px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+    .left-action, .right-action {
+        width: 50px;
+        height: 44px;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        line-height: 44px;
+    }
+    .right-action {
+        right: 0;
+        padding-right: 10px;
+        text-align: right;
+    }
+    .left-action {
+        left: 0;
+        padding-left: 10px;
+        text-align: left;
+        cursor: pointer;
+        font-size: 20px;
+        vertical-align: middle;
+        color: #7ff;
+    }
+    .left-btn ,.right-btn {
+        color: #fff;
+        font-size: 16px;
+    }
+}
+
+.header-tab {
+    width: 80%;
+    margin: auto;
+    height: 30px;
+    .left-tab, .right-tab {
+        border: 1px #fff solid;
+        display: inline-block;
+        width: 40%;
+        height: 100%;
+    }
+}

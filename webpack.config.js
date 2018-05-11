@@ -8,25 +8,21 @@ const ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 module.exports = {
     entry: {
-        style: './common/styles/release/index.js',
-        app: './index.js'
+        index: path.join(__dirname, './src/indexPage/index.js'),
+        lib: path.join(__dirname, './src/lib.js')
     },
     output: {
         path: path.join(__dirname, 'build'),
         filename: '[name].bundle.js',
-        publicPath: '/static/'
+        publicPath: '/build/'
     },
-    plugins: [
-        new webpack.HotModuleReplacementPlugin(), // 模块热更新
-        new ExtractTextPlugin("styles.css")
-    ],
     module: {
         rules:[
             {
                 test: /\.js[x]?$/,
                 exclude: /node_modules/,
                 use: [{
-                    loader: "babel-loader?presets[]=es2015&presets[]=react"
+                    loader: 'babel-loader?presets[]=react,presets[]=es2015,presets[]=stage-0'
                 }]
             },
             {
@@ -47,5 +43,15 @@ module.exports = {
                 }]
             }
         ]
-    }
+    },
+    devServer: {
+        contentBase: "./",
+        historyApiFallback: true,
+        hot:true,
+        inline: true // 实时刷新
+    },
+    plugins: [
+        new webpack.HotModuleReplacementPlugin(), // 模块热更新
+        new ExtractTextPlugin("styles.css")
+    ]
 };

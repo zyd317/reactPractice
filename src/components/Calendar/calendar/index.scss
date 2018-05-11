@@ -1,0 +1,294 @@
+$base: (
+    //主体字体颜色
+        color-text-main: #333,
+    //白色
+        color-white: #fff,
+    //蓝绿色背景
+        color-qunar: #1ba9ba,
+
+        color-border: #dce1e6,
+    //价格颜色
+        color-price: #ff8205
+);
+.calendar-page{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+    z-index: 100;
+    left: 0;
+}
+
+// 没有动画的时候 app 头部
+.app-header .calendar-page{
+    height: 96%;
+}
+
+// 没有动画的时候 iphoneX 头部
+.iphoneX-header .calendar-page{
+    height: 90%;
+}
+
+.m-calendar {
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    flex-direction: column;
+    position: fixed;
+    .scrollHeight{
+        height:100%;
+        overflow: scroll;
+    }
+    .calendar-bar {
+        width: 100%;
+        background-color: map-get($base, color-white) ;
+        position: relative;
+        .calendar-select-bar {
+            margin: 5px 10px;
+            line-height: 38px;
+            height: 38px;
+            font-size: 15px;
+            display: flex;
+            .go-tab, .back-tab {
+                position: relative;
+                text-align: center;
+                background-color: #eee;
+                flex: 1;
+                .selecting {
+                    border-bottom: 2px solid map-get($base, color-qunar);
+                }
+            }
+            .go-tab {
+                margin-right: 10px;
+                border-radius: 10px 0 0 10px;
+                .select-bar, .selecting{
+                    border-radius: 10px 0 0 10px;
+                }
+            }
+            .back-tab {
+                margin-left: 10px;
+                border-radius: 0 10px 10px 0;
+                .selecting, .select-bar{
+                    border-radius: 0 10px 10px 0;
+                }
+            }
+        }
+        .calendar-date-bar {
+            height: 22px;
+            background: #fff;
+            border-bottom: 1px solid map-get($base, color-border);
+            display: flex;
+            .dates-item {
+                font-size: 20px;
+                transform: scale(0.5);
+                line-height: 15px;
+                flex: 1;
+                color: #000;
+                &:first-child, &:last-child {
+                    color: map_get($base, color-price);
+                }
+            }
+        }
+    }
+    .calendar-content {
+        flex: 1;
+        overflow: scroll;
+        -webkit-overflow-scrolling: touch;
+        overflow-scrolling: touch;
+        .calender-month {
+            .calendar-month-title {
+                color: map-get($base, color-text-main);
+                text-align: center;
+                font-size: 18px;
+                height: 40px;
+                line-height: 40px;
+                border-top: 1px solid map-get($base, color-border);
+                padding-top: 5px;
+                margin-bottom: 8px;
+            }
+            &:first-child {
+                .calendar-month-title {
+                    border: none;
+                }
+            }
+            .calendar-week {
+                display: flex;
+                .calendar-day {
+                    position: relative;
+                    color: #000;
+                    flex: 1;
+                    height: 60px;
+                    line-height: 60px;
+                    text-align: center;
+                    font-size: 18px;
+                    .top-string {
+                        position: absolute;
+                        top: 3px;
+                        left: 0;
+                        display: block;
+                        width: 100%;
+                        height: 20px;
+                        line-height: 20px;
+                        font-size: 11px;
+                        -webkit-transform: scale(0.92);
+                        -moz-transform: scale(0.92);
+                        -ms-transform: scale(0.92);
+                        -o-transform: scale(0.92);
+                        transform: scale(0.92);
+                        color: #888;
+                        white-space: nowrap;
+                    }
+                    .price-string {
+                        position: absolute;
+                        top: 36px;
+                        left: 0;
+                        display: block;
+                        width: 100%;
+                        height: 20px;
+                        line-height: 20px;
+                        font-size: 11px;
+                        -webkit-transform: scale(0.92);
+                        -moz-transform: scale(0.92);
+                        -ms-transform: scale(0.92);
+                        -o-transform: scale(0.92);
+                        transform: scale(0.92);
+                        color: #666;
+                    }
+                    .low-price-string {
+                        color: map_get($base, color-price);
+                    }
+                }
+                .trust-day:not(.disable-day) {
+                    &:active {
+                        border-radius: 6px;
+                        background-color: map-get($base, color-white);
+                        .day {
+                            color: map-get($base, color-text-main);
+                        }
+                        .top-string {
+                            color: map-get($base, color-price);
+                        }
+                        .price-string {
+                            color: map-get($base, color-price);
+                        }
+                        &:before {
+                            display: block;
+                            position: absolute;
+                            font-size: 11px;
+                            -webkit-transform: scale(0.92);
+                            -moz-transform: scale(0.92);
+                            -ms-transform: scale(0.92);
+                            -o-transform: scale(0.92);
+                            transform: scale(0.92);
+                            left: 50%;
+                            margin-left: -18px;
+                            top: 61%;
+                            width: 36px;
+                            height: 20px;
+                            line-height: 20px;
+                            color: map-get($base, color-white);
+                        }
+                    }
+                }
+                .holiday {
+                    .day {
+                        color: map_get($base, color-price);
+                    }
+                    .top-string {
+                        color: map_get($base, color-price);
+                    }
+                }
+                .disable-day {
+                    .day {
+                        color: #c7ced4;
+                    }
+                    .top-string {
+                        color: #c7ced4;
+                    }
+                }
+                .weekend-day {
+                    .day {
+                        color: map_get($base, color-price);
+                    }
+                }
+                .select-go-day, .select-single-day, .select-back-day, .select-go-back-day {
+                    border-radius: 6px;
+                    background-color: map-get($base, color-qunar);
+                    .day {
+                        color: map-get($base, color-white);
+                    }
+                    .top-string {
+                        color: map-get($base, color-white);
+                    }
+                    .price-string {
+                        color: map-get($base, color-white);
+                    }
+                    &:before {
+                        display: block;
+                        position: absolute;
+                        font-size: 11px;
+                        -webkit-transform: scale(0.92);
+                        -moz-transform: scale(0.92);
+                        -ms-transform: scale(0.92);
+                        -o-transform: scale(0.92);
+                        transform: scale(0.92);
+                        left: 50%;
+                        margin-left: -18px;
+                        top: 61%;
+                        width: 36px;
+                        height: 20px;
+                        line-height: 20px;
+                        color: map-get($base, color-white);
+                    }
+                }
+                .select-go-day:before {
+                    content: '去程';
+
+                 }
+                .select-back-day:before {
+                    content: '返程';
+                }
+                .select-go-back-day:before {
+                    content: '去+返';
+                }
+                .during-day {
+                    background-color: #f5f5f5;
+                    .day {
+                        color: map-get($base, color-qunar);
+                    }
+                    .top-string {
+                        color: map-get($base, color-qunar);
+                    }
+                }
+            }
+        }
+    }
+    .calendar-quick-search {
+        position: fixed;
+        bottom: 12px;
+        line-height: 40px;
+        border-radius: 5px;
+        width: 80%;
+        height: 40px;
+        background-color: map_get($base, color-price);
+        margin-left: -40%;
+        left: 50%;
+        text-align: center;
+        color: map_get($base, color-white);
+        font-size: 18px;
+    }
+}
+.m-noSelectBar-calendar {
+    .calendar-content{
+        //padding-top: 23px;
+    }
+}
+.calendar-hide {
+    display: none;
+}
+.m-noHeader-calendar {
+    padding-top: 0;
+    .calendar-bar {
+        top: 0;
+    }
+}
