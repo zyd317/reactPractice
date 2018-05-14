@@ -36,7 +36,9 @@ window.COMPONENT = {
                 config: config
             });
             if(isHashChange) {
-                window.location.hash = hash;
+                let url = window.location.href;
+                url = url.replace(/(\#+[a-zA-Z]*)/g, "");
+                window.location.replace(url+'#'+hash); // 在历史记录中删除本条记录，方便页面返回
             }
             dispatchEvent(window, evt);
         }
