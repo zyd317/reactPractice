@@ -3,7 +3,7 @@
  * 用来控制组件的按需加载
  */
 import React from 'react';
-import {createEvent,dispatchEvent} from "./eventUtils";
+import { createEvent, dispatchEvent } from "./eventUtils";
 
 /**
  * 将open|update|close挂载到window.COMPONENT下方便调用
@@ -16,6 +16,7 @@ window.COMPONENT = {
         this._action(comp, config, 'update');
     },
     close: function (comp) {
+        window.history.back(); // 取消该组件在浏览器历史中的足迹
         this._action(comp, {}, 'close', true, '');
     },
 
@@ -36,28 +37,12 @@ window.COMPONENT = {
                 config: config
             });
             if(isHashChange) {
-                let url = window.location.href;
-                url = url.replace(/(\#+[a-zA-Z]*)/g, "");
-                window.location.replace(url+'#'+hash); // 在历史记录中删除本条记录，方便页面返回
+                window.location.hash = hash;
             }
             dispatchEvent(window, evt);
         }
-
     }
 };
-
-/**
- * hash值改变 当发现hash值删除之后，执行COMPONENT.close
- */
-window.addEventListener('hashchange', function (e) {
-    let hashReg = /\#([a-z]+)/;
-    let oldArr = e.oldURL.match(hashReg);
-    let newArr = e.newURL.match(hashReg);
-    if ( (oldArr && oldArr.length > 1) && !newArr ){
-        let componentName = oldArr[1];
-        window.COMPONENT.close(componentName);
-    }
-}, false);
 
 export default class CompWrapper extends React.Component {
     constructor(props) {

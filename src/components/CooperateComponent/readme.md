@@ -6,6 +6,10 @@
     
     打开组件：
         window.COMPONENT.open("calendar", connfig);
+    关闭组件:
+        window.COMPONENT.close("calendar");
+    更新组件：
+        window.COMPONENT.update("calendar", connfig);
 ```
 
 ## 要求

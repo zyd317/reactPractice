@@ -93,7 +93,6 @@ const Animation = WrappedComponent => {
                     </div>
                 )
             }
-
         }
     }
 
