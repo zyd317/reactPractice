@@ -8,17 +8,17 @@ import {render} from 'react-dom';
 import { Provider } from 'react-redux';
 import InitStore from '../initStore';
 import Reducers from './indexReducer'; // combineReducers
-import Home from './Home';
+import Touch from './Touch';
 import CompWrapper from '../components/CooperateComponent';
 import Animation from '../components/Animation';
 import Calendar from '../components/Calendar/calendar';
 
 window.store = InitStore(Reducers);
-let hideLoading = false;
-let showError = false;
+let loading = true;
+let error = false;
 render(
     <Provider store={store}>
-        <Home hideLoading={hideLoading} showError={showError} />
+        <Touch loading={loading} error={error} />
     </Provider>,
     document.getElementById('app')
 );
@@ -37,11 +37,15 @@ window.receive = function(data){
     window.store.dispatch({type: "receive", payLoad: data});
 };
 
+window.onerror = function (errorMessage, scriptURI, lineNumber,columnNumber) {
+    console.log(errorMessage, scriptURI, lineNumber,columnNumber);
+};
+
 window.endFlag = function(data){
     if(data.done){
-        hideLoading = true;
-    }else{
-        showError = true;
+        loading = false;
+    } else {
+        error = true;
     }
 };
 
