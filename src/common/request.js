@@ -1,5 +1,7 @@
 /**
  * Created by yidi.zhao on 2018/6/11.
+ *
+ * 页面所有的请求
  */
 let utils = require('./utils');
 import reqwest from 'reqwest';
@@ -12,36 +14,28 @@ const param = utils.getQueryParam();
 export function getListData(query) {
     query = Object.assign(param, query);
     query.t = qrts.LIST;
-
-    let queryTemp = {};
-    queryTemp.b = query;
-    queryTemp.c = {};
-    return fetchData(queryTemp);
+    return fetchData(query);
 }
 export function delAttention (query) {
     query.t = qrts.CANCELFAVOR;
-
-    let queryTemp = {};
-    queryTemp.b = query;
-    queryTemp.c = {};
-    return fetchData(queryTemp);
+    return fetchData(query);
 }
 
 export function addAttention (query) {
     query.t = qrts.ADDFAVOR;
-
-    let queryTemp = {};
-    queryTemp.b = query;
-    queryTemp.c = {};
-    return fetchData(queryTemp);
+    return fetchData(query);
 }
 
 function fetchData(data) {
+    let dataTemp = {
+        b: data,
+        c: {}
+    };
     return reqwest({
         url: '/interface/api/dynamic'
         , method: 'post'
         , type: 'json'
         , contentType: 'application/json'
-        , data: JSON.stringify(data)
+        , data: JSON.stringify(dataTemp)
     })
 }

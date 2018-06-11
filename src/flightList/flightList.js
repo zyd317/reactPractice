@@ -1,5 +1,8 @@
-import React from "react";
-import {render} from "react-dom";
+import React from 'react';
+import {render} from 'react-dom';
+import { Provider } from 'react-redux';
+import InitStore from '../initStore';
+import Reducers from './flightListReducer';
 
 import Home from './Home/index.js';
 import Calendar from '../components/Calendar/calendar';
@@ -12,9 +15,15 @@ import Animate from '../components/Animation/index.js';
 const AnimateCalendar = Animate(Calendar);
 const AnimateToast = Animate(Toast, true);
 
-render((
-    <Home />
-), document.getElementById('app'));
+window.store = InitStore(Reducers);
+let loading = true;
+let error = false;
+render(
+    <Provider store={store}>
+        <Home loading={loading} error={error} />
+    </Provider>,
+    document.getElementById('app')
+);
 
 render((
     <Components calendar={AnimateCalendar} toast={AnimateToast}/>

@@ -1,26 +1,27 @@
 /**
  * Created by yidi.zhao on 2018/5/10.
- * 网络请求
+ * 网络请求，页面请求，首屏请求，提前发出,减少loading时间
  */
 import reqwest from 'reqwest';
 const param = getQueryParam();
 function getListData() {
-    let query = {};
     // 从搜索进来的，或者是刷新页面，修改链接进来的时候，需要使用链接里面的参数进行请求
     param.t = 'f_flightstatus_list';
-    query.b = param;
-    query.c = {};
-    return fetchData(query);
+    return fetchData(param);
 }
 window.receive = getListData();
 
 function fetchData(data) {
+    let dataTemp = {
+        b: data,
+        c: {}
+    };
     return reqwest({
         url: '/interface/api/dynamic'
         , method: 'post'
         , type: 'json'
         , contentType: 'application/json'
-        , data: JSON.stringify(data)
+        , data: JSON.stringify(dataTemp)
     })
 }
 
