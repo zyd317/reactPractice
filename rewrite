@@ -1,5 +1,5 @@
 # 页面ng配置
-domain zyd.test.com{
+domain m.flight.qunar.com{
   location / {
     proxy_pass http://127.0.0.1:3008/;
     proxy_set_header Host 127.0.0.1:3008;
@@ -9,4 +9,9 @@ domain zyd.test.com{
       proxy_pass http://127.0.0.1:8008/build/;
       proxy_set_header Host 127.0.0.1:8008;
     }
+
+    location /hy/ {
+          proxy_pass http://m.flight.qunar.com/hy/;
+          proxy_set_header Host m.flight.qunar.com;
+        }
 }

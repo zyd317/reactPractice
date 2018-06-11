@@ -42,8 +42,7 @@ module.exports = {
     devServer: {
         contentBase: "./",
         historyApiFallback: true,
-        hot:true,
-        inline: true // 实时刷新
+        hot:true
     },
     plugins: [
         new webpack.HotModuleReplacementPlugin(), // 模块热更新
