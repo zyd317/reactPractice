@@ -41,3 +41,6 @@
 - redux: abstractReducer -> reducerFactory(return reducer(形如{name: 'moduleName', receive: func})) -> reducerX(extend abstractReducer) -> combineReducer(return combination(负责执行调用reducer)) -> store(构造了combine的store结构(store.getState()={reducerX: {state}}, store.dispatch等))
 - reducerUtil: 
 - dispatch: 使用this.props.dispatch(this.props已经通过mapDispatchToProps)或者store.dispatch
+
+### todos
+- LIST转为redux
