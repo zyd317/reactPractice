@@ -1,0 +1,44 @@
+.m-header{
+    height: .44rem;
+    padding: 0 .29rem 0 .1rem;
+    line-height: .44rem;
+    color: #212121;
+    background: #fff;
+    z-index: 11;
+    .air-code{
+        text-align: center;
+        font-size: 16px;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+    }
+    .back{
+        float: left;
+        font-size: .19rem;
+        width: .19rem;
+        height: 100%;
+        display: block;
+    }
+    .info{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+        flex: 1;
+        .iconfont{
+            font-size: .12rem;
+            padding: 6px;
+            width: .12rem;
+        }
+        .start-city{
+            text-align: right;
+        }
+        .start-city, .end-city{
+            font-size: .16rem;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            display: block;
+        }
+    }
+}

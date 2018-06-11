@@ -8,8 +8,10 @@ const ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 module.exports = {
     entry: {
-        index: path.join(__dirname, './src/indexPage/index.js'),
-        lib: path.join(__dirname, './src/lib.js')
+        index: path.join(__dirname, './src/indexPage/index.js'), // 工程入口
+        flightList: path.join(__dirname, './src/flightList/flightList.js'), // flightList工程入口
+        requestFlightList: path.join(__dirname, './src/flightList/requestList/index.js'), // 请求入口
+        lib: path.join(__dirname, './src/lib.js') // 单独打包库
     },
     output: {
         path: path.join(__dirname, 'build'),
@@ -24,13 +26,6 @@ module.exports = {
                 use: [{
                     loader: 'babel-loader?presets[]=react,presets[]=es2015,presets[]=stage-0'
                 }]
-            },
-            {
-                test: /\.css$/,
-                use: ExtractTextPlugin.extract({
-                    fallback: "style-loader",
-                    use: "css-loader"
-                })
             },
             {
                 test: /\.[s]?css$/,

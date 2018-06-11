@@ -1,0 +1,37 @@
+@import '../common/reset';
+
+body{
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    background: #fff;
+    color: #333;
+    font-size: 0.14rem;
+    line-height: 0.2rem;
+    overflow: hidden;
+    padding-top: 0;
+    box-sizing: border-box;
+}
+// app 头部
+body.app-header{
+    padding-top: .2rem; // 去掉app头部遮挡
+}
+
+// iphoneX 头部
+body.iphoneX-header{
+    padding-top: .44rem; // 去掉iphoneX头部遮挡
+}
+
+.app{
+    height: 100%;
+    position: fixed;
+    width: 100%;
+}
+// app 头部
+.app-header .app{
+    height: 97%;
+}
+// iphoneX头部
+.iphoneX-header .app{
+    height: 92%;
+}

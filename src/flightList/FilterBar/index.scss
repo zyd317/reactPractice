@@ -1,0 +1,43 @@
+.m-filter{
+    position: relative;
+    background: #fff;
+    display: flex;
+    margin-bottom: 0;
+    align-items: center;
+    justify-content: space-around;
+    height: .48rem;
+    font-size: .12rem;
+    &::before{
+        // 0.5px分界线
+        position: absolute;
+        width: 100%;
+        height: 1px;
+        background: #e0e0e0;
+        content: "";
+        top: 0;
+        left: 0;
+        transform: scaleY(.5);
+    }
+
+    .m-sort-bar, .m-filter-bar{
+        color: #616161;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        .iconfont{
+            color: #616161;
+        }
+
+        &.active{
+            color: #00AFC7;
+            .iconfont{
+                color: #00AFC7;
+            }
+        }
+    }
+}
+
+
+

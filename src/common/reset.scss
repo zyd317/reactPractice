@@ -1,0 +1,177 @@
+* {
+	margin:0;
+	padding:0;
+	-webkit-tap-highlight-color: transparent;
+	touch-callout:none;
+}
+html, body, div, input, button{
+	font-family:  PingFangSC-Regular,arial,helvetica,STHeitiSC-Light,Heiti SC,droidsansfallback,dengxian,microsoft yahei !important;
+}
+html,body{
+	height: 100%;
+	overflow: hidden;
+}
+body {
+	background: #fff;
+	color: #333;
+	font-size: 0.14rem;
+	line-height: 0.2rem;
+	height:100%;overflow:auto;margin: 0;
+	-webkit-overflow-scrolling : touch;
+}
+@font-face {
+	font-family: 'iconfont';
+	src: url('//s.qunarzz.com/flight_dynamic/fonts/2.0.24/flight_dynamic.eot'); /* IE9*/
+	src: url('//s.qunarzz.com/flight_dynamic/fonts/2.0.24/flight_dynamic.woff') format('woff'), /* chrome、firefox */
+	url('//s.qunarzz.com/flight_dynamic/fonts/2.0.24/flight_dynamic.ttf') format('truetype'), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
+	url('//s.qunarzz.com/flight_dynamic/fonts/2.0.24/flight_dynamic.svg#iconfont') format('svg'); /* iOS 4.1- */
+}
+.iconfont{
+	font-family:"iconfont" !important;
+	font-size:18px;
+	font-style:normal;
+	-webkit-font-smoothing: antialiased;
+	-webkit-text-stroke-width: 0.2px;
+	-moz-osx-font-smoothing: grayscale;
+	color: #000;
+	vertical-align: middle;
+}
+header {
+	transform: translateZ(0);
+}
+table {
+	border-collapse:collapse;
+	border-spacing:0;
+}
+fieldset,img { 
+	border:0 none;
+}
+address,caption,cite,code,dfn,em,strong,th,var{
+	font-style:normal;font-weight:normal;
+}
+strong { 
+	font-weight:800;
+}
+ol,ul,li {
+	list-style:none outside none;
+}
+caption,th {
+	text-align:left;
+}
+button {
+	border:0; 
+	margin: 0; 
+	padding: 0;
+}
+h1,h2,h3,h4,h5,h6 {
+	font-size:100%;
+	font-weight:normal;
+	margin: 0;
+	padding: 0;
+	border: 0;
+	outline: 0;
+	font-size: 100%;
+	background: transparent;
+}
+a, .lnk {
+	text-decoration: none;
+    color: #3b73af;
+}
+.hide{
+    display: none;
+}   
+.visible {
+    visibility: visible;
+} 
+input, button, textarea { 
+	outline: none;
+}
+
+@media screen and (max-width:340px){
+    html {
+        font-size: 85px;
+    }
+}
+@media screen and (min-width:341px) and (max-width:400px){
+    html {
+        font-size: 100px;
+    }
+}
+@media screen and (min-width:401px) and (max-width:500px) {
+    html {
+        font-size: 110px;
+    }
+}
+@media screen and (min-width:501px) {
+    html {
+        font-size: 140px;
+    }
+}
+
+.qunar{
+	header{
+		padding-top: .2rem;
+	}
+	.wrapper {
+		top: 0;
+	}
+	.flight-info {
+		margin-top: .59rem;
+	}
+	.plan-info {
+		margin: .1rem .16rem 0 .16rem;
+	}
+	.card{
+		margin: .1rem .16rem .3rem .16rem;
+	}
+	.wrapper.att {
+		.content{
+			padding-bottom: .8rem;
+		}
+	}
+}
+.iphoneX{
+	header{
+		padding-top: .44rem;
+	}
+	.wrapper {
+		top: 0;
+	}
+	.flight-info {
+		margin-top: .9rem;
+	}
+	.plan-info {
+		margin: .1rem .16rem 0 .16rem;
+	}
+	.card{
+		margin: .1rem .16rem .3rem .16rem;
+	}
+	.wrapper.att {
+		.content{
+			padding-bottom: .8rem;
+		}
+	}
+	.wrapper.page-comfort {
+		top: .9rem;
+	}
+}
+.wechat {
+	.wrapper {
+		top: 0;
+	}
+	.card{
+		margin: .1rem .16rem .3rem .16rem;
+	}
+	#FlightCard,.flight-info {
+		margin-top: 0;
+	}
+	.plan-info {
+		margin: .1rem .16rem 0 .16rem;
+	}
+	.wrapper.att {
+		.content{
+			padding-bottom: .8rem;
+		}
+	}
+}
+

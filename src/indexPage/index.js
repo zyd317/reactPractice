@@ -7,7 +7,8 @@ import React from 'react';
 import {render} from 'react-dom';
 import { Provider } from 'react-redux';
 import InitStore from '../initStore';
-import Reducers from './indexReducer'; // combineReducers
+import Reducers from './indexReducer';
+
 import Touch from './Touch';
 import CompWrapper from '../components/CooperateComponent';
 import Animation from '../components/Animation';

@@ -1,18 +1,5 @@
 # 页面ng配置
-domain webresource1.c-ctrip.com {
-  location / {
-    proxy_pass http://127.0.0.1:8008/;
-    proxy_set_header Host 127.0.0.1:8008;
-  }
-}
-domain m1.ctrip.com {
-  location / {
-    proxy_pass http://127.0.0.1:3008/;
-    proxy_set_header Host 127.0.0.1:3008;
-  }
-}
-
-domain m.flight.qunar.com {
+domain zyd.test.com{
   location / {
     proxy_pass http://127.0.0.1:3008/;
     proxy_set_header Host 127.0.0.1:3008;

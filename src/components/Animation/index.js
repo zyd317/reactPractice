@@ -1,6 +1,7 @@
 /**
  * Created by yidi.zhao on 2018/5/11.
- * 创建一个animation组件，内部返回传入组件的包装，主要是为了包装组件的展示(animating)隐藏(删除animating)的动画
+ * 高阶组件-包裹传入的BeWrappedComponent。
+ * 内部返回传入组件的包装，主要是为了包装组件的展示(animating)隐藏(删除animating)的动画
  */
 import React, {Component} from 'react';
 import Browser from './browser';
@@ -11,7 +12,7 @@ const STATUS_EMUN = {
     ANIMATING: 'animating'
 };
 
-const Animation = WrappedComponent => {
+const Animation = BeWrappedComponent => {
     class WrapperComponent extends Component {
         constructor(props) {
             super(props);
@@ -67,7 +68,7 @@ const Animation = WrappedComponent => {
          * @private
          */
         _componentRender() {
-            return <WrappedComponent
+            return <BeWrappedComponent
                 {...this.props}
                 ref = {this.storeRef.bind(this)}
             />

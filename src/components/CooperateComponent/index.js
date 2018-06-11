@@ -1,6 +1,6 @@
 /**
  * Created by yidi.zhao on 2018/5/11.
- * 用来控制组件的按需加载
+ * 高阶组件-控制组件按需加载-是否展示render
  */
 import React from 'react';
 import { createEvent, dispatchEvent } from "./eventUtils";

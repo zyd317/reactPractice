@@ -1,0 +1,81 @@
+// 航班列表样式
+// 最后一个占位符，底部留下空白
+.m-last-flight{
+    height: .16rem;
+}
+
+.m-flight-list {
+    padding: 1px 0;
+    background: #f5f5f5;
+    flex: 1;
+    overflow-y: hidden;
+}
+.m-no-flight-list, .m-error-flight, .loading-container{
+    flex: 1;
+    overflow-y: hidden;
+    padding-top: 1.54rem;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.m-no-flight-list{
+    img{
+        width: 1.3rem;
+    }
+    span{
+        font-size: .14rem;
+        color: #999;
+        line-height: .24rem;
+        margin-top: .14rem;
+    }
+}
+
+.loading-container{
+    position: relative;
+    .loading-wave{
+        position:absolute;
+        width: 1rem;
+        left: 50%;
+        margin-left: -.5rem;
+        height: 1rem;
+        background: url(//s.qunarzz.com/qunar_react_native/component/loading_city.gif) center center no-repeat;
+        background-size: 100% 100%;
+
+    }
+    .camel-loading{
+        width: .8rem;
+        height: .8rem;
+        z-index: 10;
+        background-image: url(//s.qunarzz.com/qunar_react_native/component/loading_crazy.gif);
+        background-size:100% 100%;
+    }
+    .text{
+        font-size: .14rem;
+        color: #9E9E9E;
+        white-space: nowrap;
+    }
+
+}
+
+
+.m-error-flight{
+    font-size: .14rem;
+    color: #999;
+    img{
+        width: 1.09rem;
+    }
+    .tips{
+        line-height: .5rem;
+    }
+    .button-reload{
+        font-size: .16rem;
+        line-height: .16rem;
+        background: #FFFFFF;
+        border: 1px solid #ccc;
+        border-radius: 3px;
+        padding: .11rem .23rem;
+    }
+}
+
