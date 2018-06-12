@@ -5,6 +5,7 @@
 
 ### 启动
     npm i webpack@3 -g
+    npm i webpack-dev-server@2.9.7 -g // 版本可能会导致跑不起来
     npm i hiproxy -g // 一个用于代替nginx的转发网络请求工具
     npm i
     webpack 编译打包资源

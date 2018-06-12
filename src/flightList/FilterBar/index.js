@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import { updateFlightList } from '../reducer/Home/reducer';
+import { updateFlightList } from '../reducer/Home/action';
 import { getSortTip } from '../dataModule/dataModule';
 import './index.scss';
 
