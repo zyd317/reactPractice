@@ -13,8 +13,7 @@ abstractReducer.action("receive", function(state, action){
     let name = this.name;
     //更新模块配置,只有module的值和当前调用的reducer是一个的时候才会修改state.存储到对应name的reducer中
     if(action.payLoad.module === name){
-        state.config = Object.assign({}, state.config, action.payLoad.config);
-        return Object.assign({}, state);
+        return Object.assign({}, state, action.payLoad.config);
     } else {
         return state;
     }

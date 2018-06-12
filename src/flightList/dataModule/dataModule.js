@@ -8,6 +8,36 @@ const ThreeDay = 259200000; // 三天的毫秒数
 const OneDay = 86400000; // 一天的毫秒数
 const today = new Date(); // 现在的时间点
 
+
+/**
+ * 清洗数据
+ */
+export function parseData(data, queryData){
+    if(data && data.bstatus && data.bstatus.code === 0 && data.data){
+        let {flights, allFilters, goDate} = data.data;
+        flights = parseFlight(flights, goDate);
+        return {
+            loading: false,
+            error: false,
+            flightList: flights,
+            goDate: goDate,
+            allFilters: allFilters, // 过滤条件使用接口
+            isShowFilter: !queryData.airCode // 无航班列表不展示过滤
+        }
+    } else if(data && data.bstatus && data.bstatus.code === 1){
+        return{
+            loading: false,
+            error: false,
+            flightList: '',
+        }
+    } else {
+        return {
+            loading: false,
+            error: true
+        }
+    }
+}
+
 /**
  * 清洗航班列表数据
  * 清洗跨天数据

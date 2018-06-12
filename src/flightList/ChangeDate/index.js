@@ -1,10 +1,15 @@
 import React, {Component} from 'react';
+import {connect} from 'react-redux';
+import { updateFlightList } from '../reducer/Home/action';
+import { updateQuery } from '../reducer/QueryParam/action';
 import { format } from '../../common/utils';
 import { isOutBeforeRange, isOutAfterRange, parseWeek } from '../dataModule/dataModule';
 import './index.scss';
 const OneDay = 86400000; // 一天的毫秒数
+const Today = new Date();
+const ThreeDay = 259200000; // 三天的毫秒数
 
-export default class ChangeDate extends Component{
+class ChangeDate extends Component{
     constructor(props){
         super(props);
     }
@@ -15,11 +20,11 @@ export default class ChangeDate extends Component{
      * @return {boolean}
      */
     shouldComponentUpdate(nextProps){
-        return nextProps.goDate !== this.props.goDate;
+        return nextProps.queryParam.goDate !== this.props.queryParam.goDate;
     }
 
     render(){
-        let { goDate } = this.props;
+        let { goDate } = this.props.queryParam;
         if(!goDate){
             return null;
         }
@@ -52,12 +57,10 @@ export default class ChangeDate extends Component{
             return ;
         }
 
-        let date = this.props.goDate;
-        let newDate = format(new Date(new Date(date.replace(/-/g, '/')).getTime()-OneDay));
+        let date = this.props.queryParam.goDate;
         // 航班列表需要重新渲染
-        this.props.updateFlightList({
-            goDate: newDate
-        });
+        this.props.queryParam.goDate = format(new Date(new Date(date.replace(/-/g, '/')).getTime()-OneDay));
+        this.props.dispatch(updateFlightList(this.props.queryParam));
     };
 
     /**
@@ -67,11 +70,38 @@ export default class ChangeDate extends Component{
         if(outAfterRange){
             return ;
         }
-        let date = this.props.goDate;
-        let newDate = format(new Date(new Date(date.replace(/-/g, '/')).getTime()+OneDay));
+        let date = this.props.queryParam.goDate;
         // 航班列表需要重新渲染
-        this.props.updateFlightList({
-            goDate: newDate
-        });
+        this.props.queryParam.goDate = format(new Date(new Date(date.replace(/-/g, '/')).getTime()+OneDay));
+        this.props.dispatch(updateQuery(this.props.queryParam));
+        this.props.dispatch(updateFlightList(this.props.queryParam));
     }
+
+    /**
+     * 点击切换日期，打开日期选择组件，并且重新请求数据
+     */
+    openSelectData = () => {
+        // 调用日历打开方法
+        window.COMPONENT.open('calendar', {
+            startDay: format(new Date(Today.getTime() - ThreeDay)), //开始日期  string or Date Objective    不传默认今天
+            endDay: '', //结束日期  string or Date Objective 不传默认一年后
+            selectGoDay: this.props.queryParam.goDate, //上次选中的出发日期 string or Date Objective
+            useHeader: true, //是否用header 默认true
+            onSelect: (data) => {
+                //完成回调, 关闭日历，并且修改样式, 修改前后一天
+                if (data) {
+                    this.props.queryParam.goDate = data;
+                    this.props.dispatch(updateFlightList(this.props.queryParam));
+                }
+            }
+        });
+    };
 }
+
+function mapStateToProps(state) {
+    return  {
+        home: state.home,
+        queryParam: state.queryParam
+    };
+}
+export default connect(mapStateToProps)(ChangeDate);

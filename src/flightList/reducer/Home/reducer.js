@@ -5,21 +5,18 @@ import { ReducerFactory } from '../../../utils/reducerUtil';
 import {abstractReducer} from '../../../abstract/abstractReducer';
 import { actions } from './action';
 
+
 let initialState = {
-    config: {
-        loading: true,
-        error: false,
-        errorInfo:''
-    },
-    fields: {
-        hasShowAlert: false
-    }
+    loading: true,
+    error: false,
+    flightList: [],
+    goDate: ''
 };
 
 let reducer = ReducerFactory(initialState, 'home').extends(abstractReducer);
 
-reducer.action(actions.SHOW_CHANGE_ALERT,function(state, action) {
-    return Object.assign({}, state, {fields: {hasShowAlert: action.payload}})
+reducer.action(actions.UPDATE_FLIGHT_LIST, function(state, action) {
+    return Object.assign({}, state, action.payload);
 });
 
 export default reducer;

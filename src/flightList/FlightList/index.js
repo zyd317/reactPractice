@@ -1,25 +1,27 @@
 import React, {Component} from 'react';
+import {connect} from 'react-redux';
+import { updateFlightList } from '../reducer/Home/action';
 import FlightItem from './FlightItem';
 import Loading from './components/Loading';
 import Error from './components/Error';
 import NoResult from './components/NoResult';
 import './index.scss'
 
-export default class FlightList extends Component{
+class FlightList extends Component{
     constructor(props){
         super(props);
         this.hasScroll = false; // 保存是否以及滚动
     }
 
     render(){
-        let { flightList, error, loading } = this.props;
+        let { flightList, error, loading } = this.props.home;
         // 加载中
         if(loading){
             return <Loading />
         }
         // 出错
         if(error){
-            return <Error updateFlight={this.props.updateFlightList}/>
+            return <Error updateFlight={this.props.dispatch(updateFlightList)}/>
         }
         if(flightList && flightList.length){
             return (
@@ -28,7 +30,6 @@ export default class FlightList extends Component{
                         {flightList.map((item) => {
                             return <FlightItem
                                 {...item}
-                                updateFlightList={this.props.updateFlightList}
                             />
                         })}
                         <li className="m-last-flight"/>
@@ -54,3 +55,10 @@ export default class FlightList extends Component{
         }
     }
 }
+
+function mapStateToProps(state) {
+    return  {
+        home: state.home
+    };
+}
+export default connect(mapStateToProps)(FlightList);

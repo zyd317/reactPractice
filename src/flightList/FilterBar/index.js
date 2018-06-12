@@ -1,8 +1,10 @@
 import React, {Component} from 'react';
+import {connect} from 'react-redux';
+import { updateFlightList } from '../reducer/Home/reducer';
 import { getSortTip } from '../dataModule/dataModule';
 import './index.scss';
 
-export default class Filter extends Component{
+class Filter extends Component{
     constructor(props){
         super(props);
         this.state = {
@@ -11,12 +13,12 @@ export default class Filter extends Component{
     }
 
     render(){
-        if(!this.props.isShowFilter){
+        if(!this.props.queryParam.isShowFilter){
             return null;
         }
         return (
             <section className="m-filter">
-                <div className={this.props.filterClick ? 'm-filter-bar active' : 'm-filter-bar'} onClick={this._changeFilter}>
+                <div className={this.props.queryParam.filterClick ? 'm-filter-bar active' : 'm-filter-bar'} onClick={this._changeFilter}>
                     <i className="iconfont">&#xe3c9;</i>
                     <div>筛选</div>
                 </div>
@@ -41,8 +43,17 @@ export default class Filter extends Component{
             sortClick: true
         });
         // 重新渲染航班列表
-        this.props.updateFlightList({
+        this.props.dispatch(updateFlightList({
             sort : sort
-        });
+        }));
     }
 }
+
+
+function mapStateToProps(state) {
+    return  {
+        queryParam: state.queryParam,
+        home: state.home
+    };
+}
+export default connect(mapStateToProps)(Filter);

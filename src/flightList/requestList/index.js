@@ -3,27 +3,27 @@
  * 网络请求，页面请求，首屏请求，提前发出,减少loading时间
  */
 import reqwest from 'reqwest';
-const param = getQueryParam();
-function getListData() {
-    // 从搜索进来的，或者是刷新页面，修改链接进来的时候，需要使用链接里面的参数进行请求
-    param.t = 'f_flightstatus_list';
-    return fetchData(param);
-}
-window.receive = getListData();
+import { parseData } from '../dataModule/dataModule';
 
-function fetchData(data) {
-    let dataTemp = {
-        b: data,
-        c: {}
-    };
-    return reqwest({
-        url: '/interface/api/dynamic'
-        , method: 'post'
-        , type: 'json'
-        , contentType: 'application/json'
-        , data: JSON.stringify(dataTemp)
-    })
-}
+const param = getQueryParam();
+param.t = 'f_flightstatus_list';
+const dataTemp = {
+    b: param,
+    c: {}
+};
+reqwest({
+    url: '/interface/api/dynamic',
+    method: 'post',
+    type: 'json',
+    contentType: 'application/json',
+    data: JSON.stringify(dataTemp)
+}).then((data)=>{
+    // 为了保证数据的统一性，在receive的时候先清洗数据
+    let dataTemp = {};
+    dataTemp.config = parseData(data, param);
+    dataTemp.module = 'home';
+    window.receive && window.receive(dataTemp);
+});
 
 
 function getQueryParam(){
