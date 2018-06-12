@@ -59,8 +59,9 @@ class ChangeDate extends Component{
 
         let date = this.props.queryParam.goDate;
         // 航班列表需要重新渲染
-        this.props.queryParam.goDate = format(new Date(new Date(date.replace(/-/g, '/')).getTime()-OneDay));
-        this.props.dispatch(updateFlightList(this.props.queryParam));
+        this.props.dispatch(updateFlightList({
+            goDate: format(new Date(new Date(date.replace(/-/g, '/')).getTime()-OneDay))
+        }));
     };
 
     /**
@@ -72,10 +73,13 @@ class ChangeDate extends Component{
         }
         let date = this.props.queryParam.goDate;
         // 航班列表需要重新渲染
-        this.props.queryParam.goDate = format(new Date(new Date(date.replace(/-/g, '/')).getTime()+OneDay));
-        this.props.dispatch(updateQuery(this.props.queryParam));
-        this.props.dispatch(updateFlightList(this.props.queryParam));
-    }
+        this.props.dispatch(updateQuery({
+            goDate: format(new Date(new Date(date.replace(/-/g, '/')).getTime()+OneDay))
+        }));
+        this.props.dispatch(updateFlightList({
+            goDate: format(new Date(new Date(date.replace(/-/g, '/')).getTime()+OneDay))
+        }));
+    };
 
     /**
      * 点击切换日期，打开日期选择组件，并且重新请求数据
@@ -90,8 +94,9 @@ class ChangeDate extends Component{
             onSelect: (data) => {
                 //完成回调, 关闭日历，并且修改样式, 修改前后一天
                 if (data) {
-                    this.props.queryParam.goDate = data;
-                    this.props.dispatch(updateFlightList(this.props.queryParam));
+                    this.props.dispatch(updateFlightList({
+                        goDate: data
+                    }));
                 }
             }
         });

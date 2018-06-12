@@ -16,7 +16,8 @@ let initialState = {
     airCode: queryParam.airCode,
     isShowFilter: !queryParam.airCode,
     activeIndex: queryParam.activeIndex,
-    from: queryParam.from
+    from: queryParam.from,
+    sort: 0
 };
 
 let reducer = ReducerFactory(initialState, 'queryParam').extends(abstractReducer);

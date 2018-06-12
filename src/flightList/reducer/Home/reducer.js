@@ -9,8 +9,7 @@ import { actions } from './action';
 let initialState = {
     loading: true,
     error: false,
-    flightList: [],
-    goDate: ''
+    flightList: []
 };
 
 let reducer = ReducerFactory(initialState, 'home').extends(abstractReducer);

@@ -20,9 +20,7 @@ export function parseData(data, queryData){
             loading: false,
             error: false,
             flightList: flights,
-            goDate: goDate,
-            allFilters: allFilters, // 过滤条件使用接口
-            isShowFilter: !queryData.airCode // 无航班列表不展示过滤
+            allFilters: allFilters // 过滤条件使用接口
         }
     } else if(data && data.bstatus && data.bstatus.code === 1){
         return{
