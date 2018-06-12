@@ -15,8 +15,8 @@ let initialState = {
 
 let reducer = ReducerFactory(initialState, 'home').extends(abstractReducer);
 
-reducer.action(actions.UPDATE_FLIGHT_LIST, function(state, action) {
-    return Object.assign({}, state, action.payload);
+reducer.action(actions.UPDATE_DATA, function(state, action) {
+    return Object.assign({}, state, action.payLoad);
 });
 
 export default reducer;
