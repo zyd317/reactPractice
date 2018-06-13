@@ -4,8 +4,7 @@
 import { getListData } from '../../../common/request';
 import { parseData } from '../../dataModule/dataModule';
 export const actions = {
-    UPDATE_FLIGHT_LIST: 'home.updateFlightList',
-    UPDATE_DATA: 'home.updateData'
+    UPDATE_DATA: 'home.updateDate'
 };
 
 export function updateFlightList(flag){
@@ -19,7 +18,7 @@ export function updateFlightList(flag){
         }).catch(()=>{
             // 请求出错， error
             dispatch({
-                type: actions.UPDATE_FLIGHT_LIST,
+                type: actions.UPDATE_DATA,
                 payLoad: {
                     loading: false,
                     error: true
