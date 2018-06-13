@@ -12,7 +12,7 @@ let initialState = {
     depCity: queryParam.depCity,
     arrCity: queryParam.arrCity,
     searchKey: queryParam.searchKey,
-    isAirCode: queryParam.airCode,
+    isAirCode: !!queryParam.airCode,
     airCode: queryParam.airCode,
     isShowFilter: !queryParam.airCode,
     activeIndex: queryParam.activeIndex,
@@ -23,8 +23,6 @@ let initialState = {
 let reducer = ReducerFactory(initialState, 'queryParam').extends(abstractReducer);
 
 reducer.action(actions.UPDATE_QUERY,function(state, action) {
-    action.payload.isAirCode = action.payload.airCode;
-    action.payload.isShowFilter = !action.payload.airCode;
     return Object.assign({}, state, action.payload);
 });
 
