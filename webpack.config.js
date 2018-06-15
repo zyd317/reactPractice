@@ -10,7 +10,6 @@ module.exports = {
     entry: {
         index: path.join(__dirname, './src/indexPage/index.js'), // 工程入口
         flightList: path.join(__dirname, './src/flightList/flightList.js'), // flightList工程入口
-        requestFlightList: path.join(__dirname, './src/flightList/requestList/index.js'), // 请求入口
         lib: path.join(__dirname, './src/lib.js') // 单独打包库
     },
     output: {
