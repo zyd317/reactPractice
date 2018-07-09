@@ -10,6 +10,7 @@
     npm i
     webpack 编译打包资源
     webpack-dev-server -w --port 8008 将webpack作为启动qzz的服务器
+    hiproxy start -o 启动代理服务器
     资源地址如：http://zyd.test.com/build/index.bundle.js
     访问demo页：http://zyd.test.com/demoName
     list: http://zyd.test.com/list?goDate=2018-06-13&depCity=%E5%8C%97%E4%BA%AC&arrCity=%E4%B8%8A%E6%B5%B7&searchKey=flightCity&activeIndex=0&from=undefined
