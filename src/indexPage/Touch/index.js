@@ -4,7 +4,7 @@
  * 路由管理simpleRouter
  */
 import React, {Component} from 'react';
-// import {Router , Route} from '@qnpm/react-simpleRouter';
+import {Router , Route} from '../../components/react-simpleRouter'; // todo
 import Home from '../Home'; // "／"路径下页面的渲染
 
 class Touch extends Component {
