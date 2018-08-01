@@ -5,7 +5,6 @@ import { ReducerFactory } from '../../../utils/reducerUtil';
 import {abstractReducer} from '../../../abstract/abstractReducer';
 import { actions } from './action';
 
-
 let initialState = {
     loading: true,
     error: false,

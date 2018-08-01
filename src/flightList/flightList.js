@@ -12,17 +12,10 @@ import './flightList.scss';
 import Components from '../components/CooperateComponent/index.js';
 import Animate from '../components/Animation/index.js';
 
-import { getQueryParam } from '../common/utils';
-
 const AnimateCalendar = Animate(Calendar);
 const AnimateToast = Animate(Toast, true);
 
 window.store = InitStore(Reducers);
-// 将查询参数放到store.queryParam中
-window.store.dispatch({type: "receive", payLoad: {
-    module: 'queryParam',
-    config: getQueryParam()
-}});
 
 let loading = true;
 let error = false;
