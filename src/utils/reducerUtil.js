@@ -12,7 +12,7 @@
  */
 
 export function ReducerFactory(defState, name) {
-    let context = {};
+    let context = {}; // 存储handler
     name && ( context.name = name ); // 缓存当前reducer模块名称
 
     /**
@@ -30,6 +30,11 @@ export function ReducerFactory(defState, name) {
         return state;
     };
 
+    /**
+     * 构造action type 对应的的handle，存储在context中
+     * @param type "receive/done..."
+     * @param handle callback
+     */
     reducer.action = function (type, handle) {
         context[type] = handle;
     };

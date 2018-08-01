@@ -34,6 +34,10 @@ document.body.addEventListener('touchmove', function (e) {
     e.preventDefault(); //阻止默认的处理方式(阻止下拉滑动的效果)
 }, {passive: false});
 
+/**
+ * 从bigPipe接收到数据之后，dispatch，维护一个更新后的store
+ * @param data
+ */
 window.receive = (data) => {
     window.store.dispatch({type: "receive", payLoad: data});
 };
