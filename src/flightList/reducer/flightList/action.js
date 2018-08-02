@@ -10,7 +10,6 @@ export function updateFlightList(flag){
     return dispatch => {
         getListData(flag).then((data)=>{
             // 请求成功
-            debugger
             dispatch({
                 type: actions.UPDATE_DATA,
                 payLoad: data
