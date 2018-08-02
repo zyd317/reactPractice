@@ -3,7 +3,8 @@
  */
 import { getListData } from '../../../common/request';
 export const actions = {
-    UPDATE_DATA: 'flightList.updateDate'
+    UPDATE_DATA: 'flightList.updateDate',
+    CHANGE_LOADING: 'flightList.changeLoading'
 };
 
 export function updateFlightList(flag){
@@ -24,5 +25,11 @@ export function updateFlightList(flag){
                 }
             });
         });
+    }
+}
+
+export function changeLoading() {
+    return {
+        type: actions.CHANGE_LOADING
     }
 }

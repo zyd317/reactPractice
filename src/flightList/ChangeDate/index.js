@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import { updateFlightList } from '../reducer/flightList/action';
+import { updateFlightList, changeLoading } from '../reducer/flightList/action';
+import { updateQuery } from '../reducer/QueryParam/action';
 import { getAfterDay, getBeforeDay } from '../../common/utils';
 import { isOutBeforeRange, isOutAfterRange, parseWeek } from '../dataModule/dataModule';
 import './index.scss';
@@ -57,6 +58,8 @@ class ChangeDate extends Component{
 
         let date = this.props.queryParam.goDate;
         const obj = { goDate: getBeforeDay(date) };
+        this.props.dispatch(changeLoading());
+        this.props.dispatch(updateQuery(obj));
         this.props.dispatch(updateFlightList(obj));
     };
 
@@ -70,6 +73,8 @@ class ChangeDate extends Component{
         let date = this.props.queryParam.goDate;
         // 航班列表需要重新渲染
         const obj = { goDate: getAfterDay(date) };
+        this.props.dispatch(changeLoading());
+        this.props.dispatch(updateQuery(obj));
         this.props.dispatch(updateFlightList(obj));
     };
 
@@ -86,6 +91,8 @@ class ChangeDate extends Component{
             onSelect: (data) => {
                 //完成回调, 关闭日历，并且修改样式, 修改前后一天
                 if (data) {
+                    this.props.dispatch(changeLoading());
+                    this.props.dispatch(updateQuery({ goDate: data }));
                     this.props.dispatch(updateFlightList({ goDate: data }));
                 }
             }

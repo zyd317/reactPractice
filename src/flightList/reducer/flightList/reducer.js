@@ -20,4 +20,8 @@ reducer.action(actions.UPDATE_DATA, function(state, action) {
     return Object.assign({}, state, data);
 });
 
+reducer.action(actions.CHANGE_LOADING, function(state) {
+    return Object.assign({}, state, initialState);
+});
+
 export default reducer;
