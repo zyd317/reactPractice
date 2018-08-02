@@ -12,7 +12,7 @@ const today = new Date(); // 现在的时间点
 /**
  * 清洗数据
  */
-export function parseData(data, queryData){
+export function parseData(data){
     if(data && data.bstatus && data.bstatus.code === 0 && data.data){
         let {flights, allFilters, goDate} = data.data;
         flights = parseFlight(flights, goDate);

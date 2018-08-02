@@ -4,6 +4,7 @@
 import { ReducerFactory } from '../../../utils/reducerUtil';
 import {abstractReducer} from '../../../abstract/abstractReducer';
 import { actions } from './action';
+import { parseData } from '../../dataModule/dataModule';
 
 let initialState = {
     loading: true,
@@ -15,7 +16,8 @@ let initialState = {
 let reducer = ReducerFactory(initialState, 'flightList').extends(abstractReducer);
 
 reducer.action(actions.UPDATE_DATA, function(state, action) {
-    return Object.assign({}, state, action.payLoad);
+    const data = parseData(action.payLoad);
+    return Object.assign({}, state, data);
 });
 
 export default reducer;

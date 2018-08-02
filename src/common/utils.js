@@ -3,6 +3,7 @@
  */
 const WeekDays = ['日','一','二','三','四','五','六'];
 const _storage = window.localStorage;
+const OneDay = 86400000; // 一天的毫秒数
 
 export function getQueryParam(...args){
     let matches = decodeURIComponent(decodeURIComponent(location.search)).match(/([^\?\=\&]+\=[^\&]+)/g);
@@ -104,7 +105,13 @@ export function pick(obj, keys) {
  * @param date Date对象
  * @return {string} yyyy-mm-dd 格式
  */
-export function format(date){
+export function getBeforeDay(date){
+    date = new Date(new Date(date.replace(/-/g, '/')).getTime()-OneDay);
+    return date.getFullYear() + '-' + formatTwoNumber(+date.getMonth()+1) + '-' + formatTwoNumber(date.getDate());
+}
+
+export function getAfterDay(date){
+    date = new Date(new Date(date.replace(/-/g, '/')).getTime()+OneDay);
     return date.getFullYear() + '-' + formatTwoNumber(+date.getMonth()+1) + '-' + formatTwoNumber(date.getDate());
 }
 

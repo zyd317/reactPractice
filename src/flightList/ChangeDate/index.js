@@ -1,11 +1,9 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import { updateFlightList } from '../reducer/flightList/action';
-import { updateQuery } from '../reducer/QueryParam/action';
-import { format } from '../../common/utils';
+import { getAfterDay, getBeforeDay } from '../../common/utils';
 import { isOutBeforeRange, isOutAfterRange, parseWeek } from '../dataModule/dataModule';
 import './index.scss';
-const OneDay = 86400000; // 一天的毫秒数
 const Today = new Date();
 const ThreeDay = 259200000; // 三天的毫秒数
 
@@ -33,7 +31,7 @@ class ChangeDate extends Component{
         let week = parseWeek(goDate);
         return (
             <section className="m-change-date">
-                <div className={'before-day' + (outBeforeRange ? ' no-use' : '')} onClick={this.getBeforeDay.bind(this, outBeforeRange)}>
+                <div className={'before-day' + (outBeforeRange ? ' no-use' : '')} onClick={this.setBeforeDay.bind(this, outBeforeRange)}>
                     <i className="iconfont">&#xf3cd;</i>
                     前一天
                 </div>
@@ -41,7 +39,7 @@ class ChangeDate extends Component{
                     <span>{week}</span>
                     <i className="iconfont">&#xf3ff;</i>
                 </div>
-                <div className={'next-day' + (outAfterRange ? ' no-use' : '')} onClick={this.getAfterDay.bind(this, outAfterRange)}>
+                <div className={'next-day' + (outAfterRange ? ' no-use' : '')} onClick={this.setAfterDay.bind(this, outAfterRange)}>
                     后一天
                     <i className="iconfont">&#xe145;</i>
                 </div>
@@ -52,33 +50,27 @@ class ChangeDate extends Component{
     /**
      * 前一天
      */
-    getBeforeDay = (outBeforeRange) => {
+    setBeforeDay = (outBeforeRange) => {
         if(outBeforeRange){
             return ;
         }
 
         let date = this.props.queryParam.goDate;
-        // 航班列表需要重新渲染
-        this.props.dispatch(updateFlightList({
-            goDate: format(new Date(new Date(date.replace(/-/g, '/')).getTime()-OneDay))
-        }));
+        const obj = { goDate: getBeforeDay(date) };
+        this.props.dispatch(updateFlightList(obj));
     };
 
     /**
      * 后一天
      */
-    getAfterDay = (outAfterRange) => {
+    setAfterDay = (outAfterRange) => {
         if(outAfterRange){
             return ;
         }
         let date = this.props.queryParam.goDate;
         // 航班列表需要重新渲染
-        this.props.dispatch(updateQuery({
-            goDate: format(new Date(new Date(date.replace(/-/g, '/')).getTime()+OneDay))
-        }));
-        this.props.dispatch(updateFlightList({
-            goDate: format(new Date(new Date(date.replace(/-/g, '/')).getTime()+OneDay))
-        }));
+        const obj = { goDate: getAfterDay(date) };
+        this.props.dispatch(updateFlightList(obj));
     };
 
     /**
@@ -94,9 +86,7 @@ class ChangeDate extends Component{
             onSelect: (data) => {
                 //完成回调, 关闭日历，并且修改样式, 修改前后一天
                 if (data) {
-                    this.props.dispatch(updateFlightList({
-                        goDate: data
-                    }));
+                    this.props.dispatch(updateFlightList({ goDate: data }));
                 }
             }
         });
@@ -105,7 +95,6 @@ class ChangeDate extends Component{
 
 function mapStateToProps(state) {
     return  {
-        home: state.home,
         queryParam: state.queryParam
     };
 }
