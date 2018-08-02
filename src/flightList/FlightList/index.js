@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import { updateFlightList } from '../reducer/Home/action';
+import { updateFlightList } from '../reducer/flightList/action';
 import FlightItem from './FlightItem';
 import Loading from './components/Loading';
 import Error from './components/Error';
@@ -14,7 +14,7 @@ class FlightList extends Component{
     }
 
     render(){
-        let { flightList, error, loading } = this.props.home;
+        let { error, loading, flightList } = this.props.flightList;
         // 加载中
         if(loading){
             return <Loading />
@@ -58,7 +58,7 @@ class FlightList extends Component{
 
 function mapStateToProps(state) {
     return  {
-        home: state.home
+        flightList: state.flightList
     };
 }
 export default connect(mapStateToProps)(FlightList);

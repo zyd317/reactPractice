@@ -2,18 +2,18 @@
  * Created by yidi.zhao on 2018/6/11.
  */
 import { getListData } from '../../../common/request';
-import { parseData } from '../../dataModule/dataModule';
 export const actions = {
-    UPDATE_DATA: 'home.updateDate'
+    UPDATE_DATA: 'flightList.updateDate'
 };
 
 export function updateFlightList(flag){
     return dispatch => {
         getListData(flag).then((data)=>{
             // 请求成功
+            debugger
             dispatch({
                 type: actions.UPDATE_DATA,
-                payLoad: parseData(data, flag)
+                payLoad: data
             });
         }).catch(()=>{
             // 请求出错， error

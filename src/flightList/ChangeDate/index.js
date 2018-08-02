@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import { updateFlightList } from '../reducer/Home/action';
+import { updateFlightList } from '../reducer/flightList/action';
 import { updateQuery } from '../reducer/QueryParam/action';
 import { format } from '../../common/utils';
 import { isOutBeforeRange, isOutAfterRange, parseWeek } from '../dataModule/dataModule';

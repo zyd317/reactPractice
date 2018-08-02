@@ -8,10 +8,11 @@ import { actions } from './action';
 let initialState = {
     loading: true,
     error: false,
+    errorInfo:'',
     flightList: []
 };
 
-let reducer = ReducerFactory(initialState, 'home').extends(abstractReducer);
+let reducer = ReducerFactory(initialState, 'flightList').extends(abstractReducer);
 
 reducer.action(actions.UPDATE_DATA, function(state, action) {
     return Object.assign({}, state, action.payLoad);
