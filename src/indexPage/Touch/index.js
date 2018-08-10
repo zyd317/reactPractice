@@ -4,7 +4,8 @@
  * 路由管理simpleRouter
  */
 import React, {Component} from 'react';
-// import {Router , Route} from '@qnpm/react-simpleRouter';
+import {Router , Route} from '../../components/react-simpleRouter';
+import Calendar from '../../components/Calendar/calendar';
 import Home from '../Home'; // "／"路径下页面的渲染
 
 class Touch extends Component {
@@ -17,10 +18,9 @@ class Touch extends Component {
     }
     render() {
         return (
-            <Home {...this.props}/>
-            // <Router path="/" component={Home} params={hideLoading} transitionTime='250' showTransition={true}>
-            //     <Route path="/contacterFiller/:id" component={ContacterFiller}/>
-            // </Router>
+            <Router path="/" component={Home} params={this.props} showTransition={false}>
+               <Route path="/Calendar/:id" component={Calendar}/>
+            </Router>
         );
     }
 }
