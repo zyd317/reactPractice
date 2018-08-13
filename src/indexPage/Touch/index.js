@@ -18,7 +18,7 @@ class Touch extends Component {
     }
     render() {
         return (
-            <Router path="/" component={Home} params={this.props} showTransition={false}>
+            <Router path="/" component={Home} params={this.props} showTransition={true}>
                <Route path="/Calendar/:id" component={Calendar}/>
             </Router>
         );

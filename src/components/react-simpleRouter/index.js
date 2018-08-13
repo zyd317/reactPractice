@@ -33,11 +33,11 @@ export class Router extends Component{
     }
 
     render(){
-        if (this.props.showTransition === true) {
-            // return <ReactTransition children: this.content key={this.state.hash} routerDir={routerDir} transitionTime={this.props.transitionTime}/>
-        } else {
-            return <div className="router-wrapper"><this.content.content params={this.props.params}/></div>
-        }
+        // if (this.props.showTransition === true) {
+        //     return <ReactTransition children: this.content key={this.state.hash} routerDir={routerDir} transitionTime={this.props.transitionTime}/>
+        // } else {
+            return <div className="router-wrapper"><this.content.content params={this.content.params}/></div>
+        // }
     }
 
     /**
@@ -170,7 +170,7 @@ export class Router extends Component{
             var p = props[i];
             var result = this.matcher(p, subList); // 递归，得到真正需要渲染的组件
             //匹配成功
-            if (result !== false) {
+            if (result !== false) {debugger
                 var toProps = p.path;
                 var value = hList[0];
                 this.params[toProps] = value;
@@ -222,7 +222,7 @@ export class Router extends Component{
             this.content = {
                 content: 'div'
             };
-        } else {
+        } else {debugger
             //完成匹配
             this.content = {
                 content: mResult.component, // 要展示的组件
