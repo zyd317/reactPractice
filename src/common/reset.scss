@@ -3,9 +3,7 @@
 	padding:0;
 	-webkit-tap-highlight-color: transparent;
 	touch-callout:none;
-}
-html, body, div, input, button{
-	font-family:  PingFangSC-Regular,arial,helvetica,STHeitiSC-Light,Heiti SC,droidsansfallback,dengxian,microsoft yahei !important;
+	font-family: PingFang SC,Hiragino Sans GB,Microsoft YaHei,WenQuanYi Micro Hei,Helvetica Neue,Arial,sans-serif;
 }
 html,body{
 	height: 100%;
@@ -43,13 +41,13 @@ table {
 	border-collapse:collapse;
 	border-spacing:0;
 }
-fieldset,img { 
+fieldset,img {
 	border:0 none;
 }
 address,caption,cite,code,dfn,em,strong,th,var{
 	font-style:normal;font-weight:normal;
 }
-strong { 
+strong {
 	font-weight:800;
 }
 ol,ul,li {
@@ -59,8 +57,8 @@ caption,th {
 	text-align:left;
 }
 button {
-	border:0; 
-	margin: 0; 
+	border:0;
+	margin: 0;
 	padding: 0;
 }
 h1,h2,h3,h4,h5,h6 {
@@ -79,11 +77,11 @@ a, .lnk {
 }
 .hide{
     display: none;
-}   
+}
 .visible {
     visibility: visible;
-} 
-input, button, textarea { 
+}
+input, button, textarea {
 	outline: none;
 }
 
