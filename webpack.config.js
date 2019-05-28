@@ -7,6 +7,7 @@ let webpack = require('webpack'),
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 module.exports = {
+    mode: 'development',
     entry: {
         index: path.join(__dirname, './src/indexPage/index.js'), // 工程入口
         flightList: path.join(__dirname, './src/flightList/flightList.js'), // flightList工程入口

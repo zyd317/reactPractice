@@ -12,7 +12,6 @@ class FlightList extends Component{
         super(props);
         this.hasScroll = false; // 保存是否以及滚动
     }
-
     render(){
         let { error, loading, flightList } = this.props.flightList;
         // 加载中

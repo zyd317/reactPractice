@@ -15,7 +15,6 @@ class Home extends Component{
     constructor(props){
         super(props);
     }
-
     render(){
         let { airCode, depCity, arrCity, isAirCode } = this.props.queryParam;
         return (

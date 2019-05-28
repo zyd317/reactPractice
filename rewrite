@@ -1,5 +1,5 @@
 # 页面ng配置
-domain zyd.test.com{
+domain hah.test.com{
   location / {
     proxy_pass http://127.0.0.1:3008/;
     proxy_set_header Host 127.0.0.1:3008;

@@ -4,7 +4,8 @@
   "description": "reactPractice",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "webpack-dev-server -w --port 8008"
   },
   "repository": {
     "type": "git",
@@ -30,13 +31,15 @@
     "babel-runtime": "^6.3.13",
     "css-loader": "^0.28.7",
     "express": "^4.15.2",
-    "extract-text-webpack-plugin": "^3.0.2",
+    "extract-text-webpack-plugin": "^4.0.0-beta.0",
     "html-webpack-plugin": "^2.30.1",
     "node-sass": "^4.7.2",
     "sass-loader": "^6.0.6",
     "style-loader": "^0.19.0",
-    "webpack": "^3.5.5",
+    "webpack": "^4.32.2",
+    "webpack-cli": "^3.3.2",
     "webpack-dev-middleware": "^1.12.2",
+    "webpack-dev-server": "^3.4.1",
     "webpack-hot-middleware": "^2.21.0"
   },
   "dependencies": {
