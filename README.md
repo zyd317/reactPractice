@@ -9,7 +9,7 @@
     npm i hiproxy -g // 一个用于代替nginx的转发网络请求工具
     npm i
     webpack 编译打包资源
-    webpack-dev-server -w --port 8008 将webpack作为启动qzz的服务器
+    npm run start 将webpack作为启动qzz的服务器
     hiproxy start -o 启动代理服务器-替换nginx
     资源地址如：http://hah.test.com/build/index.bundle.js
     访问demo页：http://hah.test.com/demoName
