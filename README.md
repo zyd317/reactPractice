@@ -41,7 +41,11 @@
     构造reducer(如home.reducer) -> ReducerFactory构造reducer -> return reducer(reducer.action将所有的handler存储在context) -> extend abstractReducer,使每个reducer都新增receive／done两个处理
     initStore -> diapatch({type: '@@redux/INIT"}) -> conbination(state, action) -> 执行所有的reducer的action，return的state构建store树
     <Provider store={store}>构造provider，将store作为props传给provider -> connect的时候subsribe-onstatechange
-    window.receive((data)=>{dispatch({type: "receive", payload: data})}) -> 遍历调用每个reducer，没有reducer判断改action调用哪个方法 -> 执行对应方法，return state -> dispatch之后执行listener(即，执行subsribe里注册的所有listener) -> 通知container的props发生变化(通过mapStateToProps,mapDispatchToProps)，reRender
+    window.receive((data)=>
+        {dispatch({type: "receive", payload: data})}) -> 
+        遍历调用每个reducer，使用reducer判断该action调用哪个方法 -> 
+        执行对应方法，return state -> dispatch之后执行listener(即，执行subsribe里注册的所有listener) -> 
+        通知container的props发生变化(通过mapStateToProps,mapDispatchToProps)，reRender
 
 ### 说明
 - 使用hiproxy进行nginx模拟，转发请求。具体配置见./rewrite
