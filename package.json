@@ -44,7 +44,7 @@
   },
   "dependencies": {
     "prop-types": "^15.5.8",
-    "qs": "^6.4.0",
+    "qs": "^6.7.3",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-redux": "^5.0.3",
